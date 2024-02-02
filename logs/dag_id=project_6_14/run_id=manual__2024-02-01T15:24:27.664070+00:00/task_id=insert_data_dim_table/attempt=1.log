@@ -1,0 +1,37 @@
+[2024-02-01 15:24:37,928] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_14.insert_data_dim_table manual__2024-02-01T15:24:27.664070+00:00 [queued]>
+[2024-02-01 15:24:37,941] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_14.insert_data_dim_table manual__2024-02-01T15:24:27.664070+00:00 [queued]>
+[2024-02-01 15:24:37,941] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 15:24:37,941] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 15:24:37,941] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 15:24:37,964] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): insert_data_dim_table> on 2024-02-01 15:24:27.664070+00:00
+[2024-02-01 15:24:37,969] {standard_task_runner.py:52} INFO - Started process 4845 to run task
+[2024-02-01 15:24:37,972] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_14', 'insert_data_dim_table', 'manual__2024-02-01T15:24:27.664070+00:00', '--job-id', '190', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpbzegkdp7', '--error-file', '/tmp/tmpjnif79z3']
+[2024-02-01 15:24:37,973] {standard_task_runner.py:80} INFO - Job 190: Subtask insert_data_dim_table
+[2024-02-01 15:24:38,155] {task_command.py:369} INFO - Running <TaskInstance: project_6_14.insert_data_dim_table manual__2024-02-01T15:24:27.664070+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 15:24:38,410] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_14
+AIRFLOW_CTX_TASK_ID=insert_data_dim_table
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T15:24:27.664070+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-01T15:24:27.664070+00:00
+[2024-02-01 15:24:38,481] {logging_mixin.py:115} INFO - <bound method NDFrame.head of      CLOSECONTACT  CONFIRMATION  ...  suspect_meninggal     tanggal
+0             274             0  ...                  0  2020-08-05
+1             534             0  ...                  0  2020-08-05
+2            2127             0  ...                  0  2020-08-05
+3               0             0  ...                  0  2020-08-05
+4            1295             0  ...                  0  2020-08-05
+..            ...           ...  ...                ...         ...
+140            32             0  ...                  2  2020-08-10
+141             0             0  ...                  0  2020-08-10
+142             0             2  ...                  0  2020-08-10
+143            12             0  ...                  0  2020-08-10
+144            28             1  ...                  0  2020-08-10
+
+[145 rows x 20 columns]>
+[2024-02-01 15:24:38,481] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-01 15:24:38,548] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_14, task_id=insert_data_dim_table, execution_date=20240201T152427, start_date=20240201T152437, end_date=20240201T152438
+[2024-02-01 15:24:38,589] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 15:24:38,712] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

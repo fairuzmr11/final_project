@@ -1,0 +1,123 @@
+version: '2.1'
+services:
+  postgres-db:
+    image: postgres
+    container_name: postgres-dwh
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_PASSWORD: Pass@981!
+      POSTGRES_USER: fai-project-6
+      POSTGRES_DB: postgres-dwh
+    volumes:
+      - /Users/fairuzramadhan/final_project/database/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5434:5432/tcp
+
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-data-staging
+    environment:
+      MYSQL_ROOT_PASSWORD: Pass@981!
+      MYSQL_DATABASE: mysql-data-staging
+      MYSQL_USER: fai-project-6
+      MYSQL_PASSWORD: your_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - /Users/fairuzramadhan/final_project/database/mysqldata:/var/lib/mysql
+
+  postgres:
+    image: postgres:13
+    container_name: postgres-airflow
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    env_file:
+      - .env
+    volumes:
+      - /Users/fairuzramadhan/final_project/database/pgdata_airflow:/var/lib/postgresql/data
+
+  scheduler:
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - /Users/fairuzramadhan/final_project/dags:/opt/airflow/dags
+      - /Users/fairuzramadhan/final_project/logs:/opt/airflow/logs
+      - /Users/fairuzramadhan/final_project/plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_started
+    container_name: airflow-schedulerdock
+    command: scheduler
+    restart: on-failure
+    ports:
+      - "8793:8793"
+
+  webserver:
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - /Users/fairuzramadhan/final_project/dags:/opt/airflow/dags
+      - /Users/fairuzramadhan/final_project/logs:/opt/airflow/logs
+      - /Users/fairuzramadhan/final_project/plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_started
+    container_name: airflow-webserver
+    restart: always
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+  
+  airflow-init:
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - /Users/fairuzramadhan/final_project/dags:/opt/airflow/dags
+      - /Users/fairuzramadhan/final_project/logs:/opt/airflow/logs
+      - /Users/fairuzramadhan/final_project/plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: airflow-init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
+        exec /entrypoint airflow version
+
+  frontend:
+    platform: linux/amd64
+    build: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+
+  backend:
+    platform: linux/amd64
+    build: backend
+
+volumes:
+  postgres_airflow:
+    external: true

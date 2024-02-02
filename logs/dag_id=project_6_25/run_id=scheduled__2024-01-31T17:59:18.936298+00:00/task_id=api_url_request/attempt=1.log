@@ -1,0 +1,25 @@
+[2024-02-01 17:59:29,723] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.api_url_request scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:29,744] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.api_url_request scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:29,744] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:29,744] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 17:59:29,745] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:29,782] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): api_url_request> on 2024-01-31 17:59:18.936298+00:00
+[2024-02-01 17:59:29,797] {standard_task_runner.py:52} INFO - Started process 10508 to run task
+[2024-02-01 17:59:29,803] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_25', 'api_url_request', 'scheduled__2024-01-31T17:59:18.936298+00:00', '--job-id', '387', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpszsvvdui', '--error-file', '/tmp/tmpl1ls1jdv']
+[2024-02-01 17:59:29,805] {standard_task_runner.py:80} INFO - Job 387: Subtask api_url_request
+[2024-02-01 17:59:30,149] {task_command.py:369} INFO - Running <TaskInstance: project_6_25.api_url_request scheduled__2024-01-31T17:59:18.936298+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 17:59:30,570] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_25
+AIRFLOW_CTX_TASK_ID=api_url_request
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T17:59:18.936298+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-31T17:59:18.936298+00:00
+[2024-02-01 17:59:30,608] {logging_mixin.py:115} INFO - Connect Engine MySQL
+[2024-02-01 17:59:31,008] {logging_mixin.py:115} INFO - DataFrame inserted into MySQL
+[2024-02-01 17:59:31,009] {python.py:173} INFO - Done. Returned value was: True
+[2024-02-01 17:59:31,236] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_25, task_id=api_url_request, execution_date=20240131T175918, start_date=20240201T175929, end_date=20240201T175931
+[2024-02-01 17:59:31,291] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 17:59:31,544] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,51 @@
+[2024-02-01 16:29:13,389] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_21.dim_table_creation manual__2024-02-01T16:28:51.921767+00:00 [queued]>
+[2024-02-01 16:29:13,405] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_21.dim_table_creation manual__2024-02-01T16:28:51.921767+00:00 [queued]>
+[2024-02-01 16:29:13,405] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:29:13,406] {taskinstance.py:1357} INFO - Starting attempt 2 of 2
+[2024-02-01 16:29:13,406] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:29:13,443] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): dim_table_creation> on 2024-02-01 16:28:51.921767+00:00
+[2024-02-01 16:29:13,453] {standard_task_runner.py:52} INFO - Started process 7388 to run task
+[2024-02-01 16:29:13,457] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_21', 'dim_table_creation', 'manual__2024-02-01T16:28:51.921767+00:00', '--job-id', '322', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpbyply3dz', '--error-file', '/tmp/tmpft0qqaz8']
+[2024-02-01 16:29:13,458] {standard_task_runner.py:80} INFO - Job 322: Subtask dim_table_creation
+[2024-02-01 16:29:13,682] {task_command.py:369} INFO - Running <TaskInstance: project_6_21.dim_table_creation manual__2024-02-01T16:28:51.921767+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 16:29:13,947] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_21
+AIRFLOW_CTX_TASK_ID=dim_table_creation
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T16:28:51.921767+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-01T16:28:51.921767+00:00
+[2024-02-01 16:29:14,028] {logging_mixin.py:115} INFO -    province_id   nama_prov
+0            1  Jawa Barat
+[2024-02-01 16:29:14,035] {logging_mixin.py:115} INFO -    district_id  province_id           nama_kab
+0            1            1  Kabupaten Bandung
+[2024-02-01 16:29:14,042] {logging_mixin.py:115} INFO -    case_id   status_name status_detail
+0        1  closecontact   dikarantina
+1        2  closecontact     discarded
+2        3  closecontact     meninggal
+3        4      probable     diisolasi
+4        5      probable     discarded
+[2024-02-01 16:29:14,089] {logging_mixin.py:115} INFO - Connect PostgreSQL using psycopg2
+[2024-02-01 16:29:14,095] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/main.py", line 141, in dim_table_creation
+    insert_into_postgres(conn_postgres, 'province_table', df_province)
+  File "/opt/airflow/dags/main.py", line 102, in insert_into_postgres
+    cursor.execute(f"INSERT INTO {table_name} VALUES {tuple(row)}")
+psycopg2.errors.UndefinedTable: relation "province_table" does not exist
+LINE 1: INSERT INTO province_table VALUES (1, 'Jawa Barat')
+                    ^
+
+[2024-02-01 16:29:14,163] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=project_6_21, task_id=dim_table_creation, execution_date=20240201T162851, start_date=20240201T162913, end_date=20240201T162914
+[2024-02-01 16:29:14,206] {standard_task_runner.py:97} ERROR - Failed to execute job 322 for task dim_table_creation (relation "province_table" does not exist
+LINE 1: INSERT INTO province_table VALUES (1, 'Jawa Barat')
+                    ^
+; 7388)
+[2024-02-01 16:29:14,250] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-01 16:29:14,376] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

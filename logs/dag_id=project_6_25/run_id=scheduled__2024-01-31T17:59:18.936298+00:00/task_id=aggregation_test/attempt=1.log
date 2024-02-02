@@ -1,0 +1,29 @@
+[2024-02-01 17:59:44,706] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.aggregation_test scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:44,787] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.aggregation_test scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:44,788] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:44,788] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 17:59:44,789] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:44,856] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): aggregation_test> on 2024-01-31 17:59:18.936298+00:00
+[2024-02-01 17:59:44,913] {standard_task_runner.py:52} INFO - Started process 10543 to run task
+[2024-02-01 17:59:44,925] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_25', 'aggregation_test', 'scheduled__2024-01-31T17:59:18.936298+00:00', '--job-id', '397', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp335nhy1h', '--error-file', '/tmp/tmpb17betzw']
+[2024-02-01 17:59:44,930] {standard_task_runner.py:80} INFO - Job 397: Subtask aggregation_test
+[2024-02-01 17:59:45,406] {task_command.py:369} INFO - Running <TaskInstance: project_6_25.aggregation_test scheduled__2024-01-31T17:59:18.936298+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 17:59:45,814] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_25
+AIRFLOW_CTX_TASK_ID=aggregation_test
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T17:59:18.936298+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-31T17:59:18.936298+00:00
+[2024-02-01 17:59:45,992] {logging_mixin.py:115} INFO -    id  kode_prov  case_id     tanggal total
+0   1         32        1  2020-08-05     0
+1   2         32        1  2020-08-05    72
+2   3         32        1  2020-08-05   135
+3   4         32        1  2020-08-05     0
+4   5         32        1  2020-08-05     3
+[2024-02-01 17:59:45,993] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-01 17:59:46,097] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_25, task_id=aggregation_test, execution_date=20240131T175918, start_date=20240201T175944, end_date=20240201T175946
+[2024-02-01 17:59:46,158] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 17:59:46,384] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

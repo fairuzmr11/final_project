@@ -1,0 +1,32 @@
+[2024-02-02 06:21:13,378] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_26.generate_data manual__2024-02-02T06:20:07.954489+00:00 [queued]>
+[2024-02-02 06:21:13,391] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_26.generate_data manual__2024-02-02T06:20:07.954489+00:00 [queued]>
+[2024-02-02 06:21:13,391] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 06:21:13,391] {taskinstance.py:1357} INFO - Starting attempt 2 of 3
+[2024-02-02 06:21:13,392] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 06:21:13,420] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): generate_data> on 2024-02-02 06:20:07.954489+00:00
+[2024-02-02 06:21:13,434] {standard_task_runner.py:52} INFO - Started process 4718 to run task
+[2024-02-02 06:21:13,440] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_26', 'generate_data', 'manual__2024-02-02T06:20:07.954489+00:00', '--job-id', '415', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmplbmifbaf', '--error-file', '/tmp/tmpnlgn4_3f']
+[2024-02-02 06:21:13,442] {standard_task_runner.py:80} INFO - Job 415: Subtask generate_data
+[2024-02-02 06:21:13,693] {task_command.py:369} INFO - Running <TaskInstance: project_6_26.generate_data manual__2024-02-02T06:20:07.954489+00:00 [running]> on host 20775c919683
+[2024-02-02 06:21:13,992] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_26
+AIRFLOW_CTX_TASK_ID=generate_data
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-02T06:20:07.954489+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-02T06:20:07.954489+00:00
+[2024-02-02 06:21:14,029] {logging_mixin.py:115} INFO - Connect Engine MySQL
+[2024-02-02 06:21:14,198] {logging_mixin.py:115} INFO -    CLOSECONTACT  CONFIRMATION  ...  suspect_meninggal     tanggal
+0           274             0  ...                  0  2020-08-05
+1           534             0  ...                  0  2020-08-05
+2          2127             0  ...                  0  2020-08-05
+3             0             0  ...                  0  2020-08-05
+4          1295             0  ...                  0  2020-08-05
+
+[5 rows x 20 columns]
+[2024-02-02 06:21:14,205] {python.py:173} INFO - Done. Returned value was: True
+[2024-02-02 06:21:14,360] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_26, task_id=generate_data, execution_date=20240202T062007, start_date=20240202T062113, end_date=20240202T062114
+[2024-02-02 06:21:14,419] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-02 06:21:14,586] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

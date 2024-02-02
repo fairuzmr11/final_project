@@ -1,0 +1,30 @@
+[2024-01-31 15:49:16,735] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_10.dim_district manual__2024-01-31T15:49:07.986872+00:00 [queued]>
+[2024-01-31 15:49:16,750] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_10.dim_district manual__2024-01-31T15:49:07.986872+00:00 [queued]>
+[2024-01-31 15:49:16,750] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 15:49:16,751] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-01-31 15:49:16,751] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 15:49:16,774] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): dim_district> on 2024-01-31 15:49:07.986872+00:00
+[2024-01-31 15:49:16,787] {standard_task_runner.py:52} INFO - Started process 8320 to run task
+[2024-01-31 15:49:16,790] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_10', 'dim_district', 'manual__2024-01-31T15:49:07.986872+00:00', '--job-id', '128', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpmfhzhtwr', '--error-file', '/tmp/tmpqmsh2l_5']
+[2024-01-31 15:49:16,791] {standard_task_runner.py:80} INFO - Job 128: Subtask dim_district
+[2024-01-31 15:49:17,017] {task_command.py:369} INFO - Running <TaskInstance: project_6_10.dim_district manual__2024-01-31T15:49:07.986872+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 15:49:17,418] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_10
+AIRFLOW_CTX_TASK_ID=dim_district
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T15:49:07.986872+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T15:49:07.986872+00:00
+[2024-01-31 15:49:17,524] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-01-31 15:49:17,598] {dbapi.py:208} INFO - Running statement: CREATE TABLE IF NOT EXISTS district_table (
+    district_id SERIAL PRIMARY KEY,
+    province_id INTEGER REFERENCES province_table(province_id),
+    district_name VARCHAR(255) NOT NULL
+);, parameters: None
+[2024-01-31 15:49:17,609] {postgres.py:94} INFO - NOTICE:  relation "district_table" already exists, skipping
+
+[2024-01-31 15:49:17,705] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_10, task_id=dim_district, execution_date=20240131T154907, start_date=20240131T154916, end_date=20240131T154917
+[2024-01-31 15:49:17,814] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 15:49:18,009] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

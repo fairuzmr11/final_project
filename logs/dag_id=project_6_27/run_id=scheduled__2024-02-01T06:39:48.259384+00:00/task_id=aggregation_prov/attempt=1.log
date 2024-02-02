@@ -1,0 +1,29 @@
+[2024-02-02 06:40:06,639] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_27.aggregation_prov scheduled__2024-02-01T06:39:48.259384+00:00 [queued]>
+[2024-02-02 06:40:06,655] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_27.aggregation_prov scheduled__2024-02-01T06:39:48.259384+00:00 [queued]>
+[2024-02-02 06:40:06,656] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 06:40:06,656] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-02 06:40:06,656] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 06:40:06,684] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): aggregation_prov> on 2024-02-01 06:39:48.259384+00:00
+[2024-02-02 06:40:06,693] {standard_task_runner.py:52} INFO - Started process 5402 to run task
+[2024-02-02 06:40:06,698] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_27', 'aggregation_prov', 'scheduled__2024-02-01T06:39:48.259384+00:00', '--job-id', '434', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpwfiqj0c9', '--error-file', '/tmp/tmp5v_jb5aj']
+[2024-02-02 06:40:06,699] {standard_task_runner.py:80} INFO - Job 434: Subtask aggregation_prov
+[2024-02-02 06:40:07,007] {task_command.py:369} INFO - Running <TaskInstance: project_6_27.aggregation_prov scheduled__2024-02-01T06:39:48.259384+00:00 [running]> on host 20775c919683
+[2024-02-02 06:40:07,298] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_27
+AIRFLOW_CTX_TASK_ID=aggregation_prov
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T06:39:48.259384+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-01T06:39:48.259384+00:00
+[2024-02-02 06:40:07,437] {logging_mixin.py:115} INFO -    id  kode_prov  case_id     tanggal  total
+0   1         32        1  2020-08-05   1815
+[2024-02-02 06:40:07,451] {logging_mixin.py:115} INFO -    id  kode_prov  case_id year_month  total
+0   1         32        1    2020-08   2507
+[2024-02-02 06:40:07,464] {logging_mixin.py:115} INFO -    kode_prov  id  case_id  year  total
+0         32  10        1  2020   2507
+[2024-02-02 06:40:07,465] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-02 06:40:07,535] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_27, task_id=aggregation_prov, execution_date=20240201T063948, start_date=20240202T064006, end_date=20240202T064007
+[2024-02-02 06:40:07,602] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-02 06:40:07,776] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

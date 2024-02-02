@@ -1,0 +1,47 @@
+[2024-02-02 08:22:06,122] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_30.aggregation_district scheduled__2024-02-01T08:21:31.958417+00:00 [queued]>
+[2024-02-02 08:22:06,147] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_30.aggregation_district scheduled__2024-02-01T08:21:31.958417+00:00 [queued]>
+[2024-02-02 08:22:06,148] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:22:06,148] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-02 08:22:06,149] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:22:06,184] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): aggregation_district> on 2024-02-01 08:21:31.958417+00:00
+[2024-02-02 08:22:06,198] {standard_task_runner.py:52} INFO - Started process 8969 to run task
+[2024-02-02 08:22:06,208] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_30', 'aggregation_district', 'scheduled__2024-02-01T08:21:31.958417+00:00', '--job-id', '503', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpjjrodr23', '--error-file', '/tmp/tmpbv8ja5ln']
+[2024-02-02 08:22:06,209] {standard_task_runner.py:80} INFO - Job 503: Subtask aggregation_district
+[2024-02-02 08:22:06,506] {task_command.py:369} INFO - Running <TaskInstance: project_6_30.aggregation_district scheduled__2024-02-01T08:21:31.958417+00:00 [running]> on host 20775c919683
+[2024-02-02 08:22:06,819] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_30
+AIRFLOW_CTX_TASK_ID=aggregation_district
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T08:21:31.958417+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-01T08:21:31.958417+00:00
+[2024-02-02 08:22:07,057] {logging_mixin.py:115} INFO -    id  kode_kab  case_id year_month  total
+0   1      3201        1    2020-08      0
+[2024-02-02 08:22:07,068] {logging_mixin.py:115} INFO - [   0  986  229 3790  491  332    3  125    4 4717   32  105   31    1
+  170 1055   91   85  274  156   51 2200  117  134 2250 2647 2877    6
+   49 1563    5 1292   18 2075   20   37  467 1687 1963   28  198  255
+    9  300   55  345  160   35   15  660   17  991 1093  220  441  367
+ 1315   64   50  446   57    2 5787   68  500    7   11  693   33  120
+ 1371  342   27 6098   62  235 2042  192 4017 5532  253   72  462   42
+  773   53  537  573   10  100  845   83 2231  145  115 1477  329   16
+ 3547 6780 6694  154  195    8  371   36 1613  201  376 2745  428 5682
+  118  318 3608  330  526   19  685  230   25 1364  187  475  583]
+[2024-02-02 08:22:07,103] {logging_mixin.py:115} INFO -    id  kode_kab  case_id  year  total
+0   1      3201        1  2020      0
+[2024-02-02 08:22:07,177] {logging_mixin.py:115} INFO - Connect PostgreSQL using psycopg2
+[2024-02-02 08:22:07,178] {logging_mixin.py:115} INFO - <connection object at 0x7fffdc6e3d70; dsn: 'user=fai-project-6 password=xxx dbname=postgres-dwh host=172.18.0.1 port=5434', closed: 0>
+[2024-02-02 08:22:07,180] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/main.py", line 252, in aggregation_district
+    insert_into_postgres(conn_postgres, 'monthly_district', district_monthly_merge, debug=True)
+TypeError: insert_into_postgres() got an unexpected keyword argument 'debug'
+[2024-02-02 08:22:07,373] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=project_6_30, task_id=aggregation_district, execution_date=20240201T082131, start_date=20240202T082206, end_date=20240202T082207
+[2024-02-02 08:22:07,450] {standard_task_runner.py:97} ERROR - Failed to execute job 503 for task aggregation_district (insert_into_postgres() got an unexpected keyword argument 'debug'; 8969)
+[2024-02-02 08:22:07,474] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-02 08:22:07,727] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

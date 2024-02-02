@@ -1,0 +1,32 @@
+[2024-01-31 13:30:52,447] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_3.create_agg_table manual__2024-01-31T13:30:28.720660+00:00 [queued]>
+[2024-01-31 13:30:52,472] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_3.create_agg_table manual__2024-01-31T13:30:28.720660+00:00 [queued]>
+[2024-01-31 13:30:52,473] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 13:30:52,473] {taskinstance.py:1357} INFO - Starting attempt 2 of 2
+[2024-01-31 13:30:52,473] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 13:30:52,514] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): create_agg_table> on 2024-01-31 13:30:28.720660+00:00
+[2024-01-31 13:30:52,532] {standard_task_runner.py:52} INFO - Started process 3618 to run task
+[2024-01-31 13:30:52,538] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_3', 'create_agg_table', 'manual__2024-01-31T13:30:28.720660+00:00', '--job-id', '76', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpz7tn8hmi', '--error-file', '/tmp/tmpeh_lblor']
+[2024-01-31 13:30:52,539] {standard_task_runner.py:80} INFO - Job 76: Subtask create_agg_table
+[2024-01-31 13:30:52,971] {task_command.py:369} INFO - Running <TaskInstance: project_6_3.create_agg_table manual__2024-01-31T13:30:28.720660+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 13:30:53,723] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_3
+AIRFLOW_CTX_TASK_ID=create_agg_table
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T13:30:28.720660+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T13:30:28.720660+00:00
+[2024-01-31 13:30:53,895] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-01-31 13:30:54,008] {dbapi.py:208} INFO - Running statement: 
+                create table if not exists test_1 (
+                dt date,
+                dag_id character varying,
+                primary key (dt, dag_id)
+                )
+        , parameters: None
+[2024-01-31 13:30:54,023] {postgres.py:94} INFO - NOTICE:  relation "test_1" already exists, skipping
+
+[2024-01-31 13:30:54,309] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_3, task_id=create_agg_table, execution_date=20240131T133028, start_date=20240131T133052, end_date=20240131T133054
+[2024-01-31 13:30:54,521] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 13:30:55,034] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

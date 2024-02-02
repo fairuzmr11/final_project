@@ -1,0 +1,41 @@
+[2024-01-31 15:38:19,545] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_9.dim_prov scheduled__2024-01-30T15:37:55.232349+00:00 [queued]>
+[2024-01-31 15:38:19,558] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_9.dim_prov scheduled__2024-01-30T15:37:55.232349+00:00 [queued]>
+[2024-01-31 15:38:19,559] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 15:38:19,559] {taskinstance.py:1357} INFO - Starting attempt 2 of 2
+[2024-01-31 15:38:19,559] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 15:38:19,583] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): dim_prov> on 2024-01-30 15:37:55.232349+00:00
+[2024-01-31 15:38:19,589] {standard_task_runner.py:52} INFO - Started process 7918 to run task
+[2024-01-31 15:38:19,593] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_9', 'dim_prov', 'scheduled__2024-01-30T15:37:55.232349+00:00', '--job-id', '116', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmprrk2tql7', '--error-file', '/tmp/tmp807n0rnv']
+[2024-01-31 15:38:19,594] {standard_task_runner.py:80} INFO - Job 116: Subtask dim_prov
+[2024-01-31 15:38:19,806] {task_command.py:369} INFO - Running <TaskInstance: project_6_9.dim_prov scheduled__2024-01-30T15:37:55.232349+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 15:38:19,921] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1451, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1555, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2202, in render_templates
+    rendered_task = self.task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/baseoperator.py", line 1179, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 348, in _do_render_template_fields
+    seen_oids,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/abstractoperator.py", line 385, in render_template
+    template = jinja_env.get_template(value)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/airflow/.local/lib/python3.7/site-packages/jinja2/loaders.py", line 214, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: dags/sql/raw_ddl.sql
+[2024-01-31 15:38:19,985] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=project_6_9, task_id=dim_prov, execution_date=20240130T153755, start_date=20240131T153819, end_date=20240131T153819
+[2024-01-31 15:38:20,019] {standard_task_runner.py:97} ERROR - Failed to execute job 116 for task dim_prov (dags/sql/raw_ddl.sql; 7918)
+[2024-01-31 15:38:20,050] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-01-31 15:38:20,262] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

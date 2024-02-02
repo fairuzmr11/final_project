@@ -1,0 +1,46 @@
+[2024-01-31 13:28:55,871] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_2.create_agg_table manual__2024-01-31T13:25:34.309287+00:00 [queued]>
+[2024-01-31 13:28:55,904] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_2.create_agg_table manual__2024-01-31T13:25:34.309287+00:00 [queued]>
+[2024-01-31 13:28:55,904] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 13:28:55,905] {taskinstance.py:1357} INFO - Starting attempt 4 of 4
+[2024-01-31 13:28:55,905] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 13:28:55,941] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): create_agg_table> on 2024-01-31 13:25:34.309287+00:00
+[2024-01-31 13:28:55,952] {standard_task_runner.py:52} INFO - Started process 3517 to run task
+[2024-01-31 13:28:55,957] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_2', 'create_agg_table', 'manual__2024-01-31T13:25:34.309287+00:00', '--job-id', '65', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpc1qsogw2', '--error-file', '/tmp/tmpukl5km9c']
+[2024-01-31 13:28:55,958] {standard_task_runner.py:80} INFO - Job 65: Subtask create_agg_table
+[2024-01-31 13:28:56,258] {task_command.py:369} INFO - Running <TaskInstance: project_6_2.create_agg_table manual__2024-01-31T13:25:34.309287+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 13:28:56,667] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_2
+AIRFLOW_CTX_TASK_ID=create_agg_table
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T13:25:34.309287+00:00
+AIRFLOW_CTX_TRY_NUMBER=4
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T13:25:34.309287+00:00
+[2024-01-31 13:28:56,785] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-01-31 13:28:56,869] {dbapi.py:208} INFO - Running statement: 
+                create table if not exist test_1 (
+                dt date,
+                dag_id character varying,
+                primary key (dt, dag_id)
+                )
+        , parameters: None
+[2024-01-31 13:28:56,880] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/postgres/operators/postgres.py", line 92, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/dbapi.py", line 188, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/hooks/dbapi.py", line 212, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.SyntaxError: syntax error at or near "exist"
+LINE 2:                 create table if not exist test_1 (
+                                            ^
+
+[2024-01-31 13:28:57,004] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=project_6_2, task_id=create_agg_table, execution_date=20240131T132534, start_date=20240131T132855, end_date=20240131T132857
+[2024-01-31 13:28:57,090] {standard_task_runner.py:97} ERROR - Failed to execute job 65 for task create_agg_table (syntax error at or near "exist"
+LINE 2:                 create table if not exist test_1 (
+                                            ^
+; 3517)
+[2024-01-31 13:28:57,104] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-01-31 13:28:57,533] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,24 @@
+[2024-01-31 10:36:59,908] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [queued]>
+[2024-01-31 10:36:59,914] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [queued]>
+[2024-01-31 10:36:59,914] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 10:36:59,914] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-01-31 10:36:59,915] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 10:36:59,929] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): mysql_conn_check> on 2024-01-30 10:36:47.424244+00:00
+[2024-01-31 10:36:59,933] {standard_task_runner.py:52} INFO - Started process 6832 to run task
+[2024-01-31 10:36:59,935] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'database_connection_testing_mysql_postgres_7', 'mysql_conn_check', 'scheduled__2024-01-30T10:36:47.424244+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/test_connection.py', '--cfg-path', '/tmp/tmpf3a6yy5n', '--error-file', '/tmp/tmp3na_pfvd']
+[2024-01-31 10:36:59,936] {standard_task_runner.py:80} INFO - Job 29: Subtask mysql_conn_check
+[2024-01-31 10:36:59,978] {task_command.py:369} INFO - Running <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [running]> on host f72468368ef9
+[2024-01-31 10:37:00,041] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=database_connection_testing_mysql_postgres_7
+AIRFLOW_CTX_TASK_ID=mysql_conn_check
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-30T10:36:47.424244+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-30T10:36:47.424244+00:00
+[2024-01-31 10:37:00,043] {logging_mixin.py:115} INFO - Error connecting to MySQL: No module named 'mysql'
+[2024-01-31 10:37:00,043] {python.py:173} INFO - Done. Returned value was: False
+[2024-01-31 10:37:00,065] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=database_connection_testing_mysql_postgres_7, task_id=mysql_conn_check, execution_date=20240130T103647, start_date=20240131T103659, end_date=20240131T103700
+[2024-01-31 10:37:00,107] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 10:37:00,129] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

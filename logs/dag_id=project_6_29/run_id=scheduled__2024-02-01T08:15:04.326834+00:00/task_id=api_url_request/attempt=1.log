@@ -1,0 +1,129 @@
+[2024-02-02 08:15:19,912] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_29.api_url_request scheduled__2024-02-01T08:15:04.326834+00:00 [queued]>
+[2024-02-02 08:15:19,926] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_29.api_url_request scheduled__2024-02-01T08:15:04.326834+00:00 [queued]>
+[2024-02-02 08:15:19,926] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:15:19,927] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-02 08:15:19,927] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:15:19,951] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): api_url_request> on 2024-02-01 08:15:04.326834+00:00
+[2024-02-02 08:15:19,962] {standard_task_runner.py:52} INFO - Started process 8605 to run task
+[2024-02-02 08:15:19,969] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_29', 'api_url_request', 'scheduled__2024-02-01T08:15:04.326834+00:00', '--job-id', '459', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpm3xqk9bz', '--error-file', '/tmp/tmpokko1f7h']
+[2024-02-02 08:15:19,970] {standard_task_runner.py:80} INFO - Job 459: Subtask api_url_request
+[2024-02-02 08:15:20,195] {task_command.py:369} INFO - Running <TaskInstance: project_6_29.api_url_request scheduled__2024-02-01T08:15:04.326834+00:00 [running]> on host 20775c919683
+[2024-02-02 08:15:20,462] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_29
+AIRFLOW_CTX_TASK_ID=api_url_request
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T08:15:04.326834+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-01T08:15:04.326834+00:00
+[2024-02-02 08:15:20,512] {logging_mixin.py:115} INFO - Connect Engine MySQL
+[2024-02-02 08:15:20,822] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 538, in cmd_query
+    query_attrs=self._query_attrs)
+_mysql_connector.MySQLInterfaceError: Table 'mysql-data-staging.raw_covid_data' doesn't exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1706, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 716, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/cursor_cext.py", line 271, in execute
+    raw_as_string=self._raw_as_string)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 541, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'mysql-data-staging.raw_covid_data' doesn't exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/dialects/mysql/base.py", line 3373, in _show_create_table
+    ).exec_driver_sql(st)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1580, in exec_driver_sql
+    future=True,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1491, in _exec_driver_sql
+    distilled_parameters,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1749, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1706, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 716, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/cursor_cext.py", line 271, in execute
+    raw_as_string=self._raw_as_string)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 541, in cmd_query
+    sqlstate=exc.sqlstate)
+sqlalchemy.exc.ProgrammingError: (mysql.connector.errors.ProgrammingError) 1146 (42S02): Table 'mysql-data-staging.raw_covid_data' doesn't exist
+[SQL: SHOW CREATE TABLE `raw_covid_data`]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/main.py", line 61, in api_url_request
+    df.to_sql(name='raw_covid_data', con=mysql_engine, if_exists='replace', index=False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/core/generic.py", line 2882, in to_sql
+    method=method,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 728, in to_sql
+    **engine_kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 1758, in to_sql
+    dtype=dtype,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 1650, in prep_table
+    table.create()
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 860, in create
+    self.pd_sql.drop_table(self.name, self.schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 1809, in drop_table
+    self.meta.reflect(only=[table_name], schema=schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 4715, in reflect
+    Table(name, self, **reflect_opts)
+  File "<string>", line 2, in __new__
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 298, in warned
+    return fn(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 600, in __new__
+    metadata._remove_table(name, schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 595, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 675, in _init
+    resolve_fks=resolve_fks,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 710, in _autoload
+    _extend_on=_extend_on,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 758, in reflect_table
+    table_name, schema, **table.dialect_kwargs
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 399, in get_table_options
+    conn, table_name, schema, info_cache=self.info_cache, **kw
+  File "<string>", line 2, in get_table_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 55, in cache
+    ret = fn(self, con, *args, **kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/dialects/mysql/base.py", line 2997, in get_table_options
+    connection, table_name, schema, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/dialects/mysql/base.py", line 3249, in _parsed_state_or_create
+    info_cache=kw.get("info_cache", None),
+  File "<string>", line 2, in _setup_parser
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/reflection.py", line 55, in cache
+    ret = fn(self, con, *args, **kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/dialects/mysql/base.py", line 3273, in _setup_parser
+    connection, None, charset, full_name=full_name
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/dialects/mysql/base.py", line 3376, in _show_create_table
+    util.raise_(exc.NoSuchTableError(full_name), replace_context=e)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+sqlalchemy.exc.NoSuchTableError: `raw_covid_data`
+[2024-02-02 08:15:20,952] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=project_6_29, task_id=api_url_request, execution_date=20240201T081504, start_date=20240202T081519, end_date=20240202T081520
+[2024-02-02 08:15:20,985] {standard_task_runner.py:97} ERROR - Failed to execute job 459 for task api_url_request (`raw_covid_data`; 8605)
+[2024-02-02 08:15:21,003] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-02 08:15:21,173] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

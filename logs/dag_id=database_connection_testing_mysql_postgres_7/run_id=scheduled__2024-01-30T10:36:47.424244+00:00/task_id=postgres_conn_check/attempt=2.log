@@ -1,0 +1,24 @@
+[2024-01-31 11:46:55,086] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.postgres_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [queued]>
+[2024-01-31 11:46:55,101] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.postgres_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [queued]>
+[2024-01-31 11:46:55,101] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 11:46:55,102] {taskinstance.py:1357} INFO - Starting attempt 2 of 3
+[2024-01-31 11:46:55,102] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 11:46:55,124] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): postgres_conn_check> on 2024-01-30 10:36:47.424244+00:00
+[2024-01-31 11:46:55,128] {standard_task_runner.py:52} INFO - Started process 319 to run task
+[2024-01-31 11:46:55,131] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'database_connection_testing_mysql_postgres_7', 'postgres_conn_check', 'scheduled__2024-01-30T10:36:47.424244+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/test_connection.py', '--cfg-path', '/tmp/tmp4hgg1orm', '--error-file', '/tmp/tmp9lob_osx']
+[2024-01-31 11:46:55,133] {standard_task_runner.py:80} INFO - Job 32: Subtask postgres_conn_check
+[2024-01-31 11:46:55,358] {task_command.py:369} INFO - Running <TaskInstance: database_connection_testing_mysql_postgres_7.postgres_conn_check scheduled__2024-01-30T10:36:47.424244+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 11:46:55,632] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=database_connection_testing_mysql_postgres_7
+AIRFLOW_CTX_TASK_ID=postgres_conn_check
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-30T10:36:47.424244+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-30T10:36:47.424244+00:00
+[2024-01-31 11:46:55,691] {logging_mixin.py:115} INFO - Connect PostgreSQL using psycopg2
+[2024-01-31 11:46:55,691] {python.py:173} INFO - Done. Returned value was: True
+[2024-01-31 11:46:55,828] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=database_connection_testing_mysql_postgres_7, task_id=postgres_conn_check, execution_date=20240130T103647, start_date=20240131T114655, end_date=20240131T114655
+[2024-01-31 11:46:55,877] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 11:46:56,026] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

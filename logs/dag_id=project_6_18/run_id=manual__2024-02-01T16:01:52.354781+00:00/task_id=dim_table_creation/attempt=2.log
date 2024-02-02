@@ -1,0 +1,33 @@
+[2024-02-01 16:03:25,026] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_18.dim_table_creation manual__2024-02-01T16:01:52.354781+00:00 [queued]>
+[2024-02-01 16:03:25,039] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_18.dim_table_creation manual__2024-02-01T16:01:52.354781+00:00 [queued]>
+[2024-02-01 16:03:25,040] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:03:25,040] {taskinstance.py:1357} INFO - Starting attempt 2 of 3
+[2024-02-01 16:03:25,040] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:03:25,065] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): dim_table_creation> on 2024-02-01 16:01:52.354781+00:00
+[2024-02-01 16:03:25,071] {standard_task_runner.py:52} INFO - Started process 6340 to run task
+[2024-02-01 16:03:25,075] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_18', 'dim_table_creation', 'manual__2024-02-01T16:01:52.354781+00:00', '--job-id', '260', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp2m7uqj4g', '--error-file', '/tmp/tmpou6oev67']
+[2024-02-01 16:03:25,076] {standard_task_runner.py:80} INFO - Job 260: Subtask dim_table_creation
+[2024-02-01 16:03:25,301] {task_command.py:369} INFO - Running <TaskInstance: project_6_18.dim_table_creation manual__2024-02-01T16:01:52.354781+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 16:03:25,598] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_18
+AIRFLOW_CTX_TASK_ID=dim_table_creation
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T16:01:52.354781+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-01T16:01:52.354781+00:00
+[2024-02-01 16:03:25,659] {logging_mixin.py:115} INFO -    province_id   nama_prov
+0            1  Jawa Barat
+[2024-02-01 16:03:25,673] {logging_mixin.py:115} INFO -    district_id  province_id           nama_kab
+0            1            1  Kabupaten Bandung
+[2024-02-01 16:03:25,685] {logging_mixin.py:115} INFO -    case_id   status_name status_detail
+0        1  closecontact   dikarantina
+1        2  closecontact     discarded
+2        3  closecontact     meninggal
+3        4      probable     diisolasi
+4        5      probable     discarded
+[2024-02-01 16:03:25,686] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-01 16:03:25,802] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_18, task_id=dim_table_creation, execution_date=20240201T160152, start_date=20240201T160325, end_date=20240201T160325
+[2024-02-01 16:03:25,855] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 16:03:26,061] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

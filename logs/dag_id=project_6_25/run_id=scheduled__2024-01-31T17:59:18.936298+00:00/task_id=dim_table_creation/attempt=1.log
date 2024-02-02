@@ -1,0 +1,35 @@
+[2024-02-01 17:59:38,938] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.dim_table_creation scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:38,969] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_25.dim_table_creation scheduled__2024-01-31T17:59:18.936298+00:00 [queued]>
+[2024-02-01 17:59:38,969] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:38,970] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 17:59:38,970] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 17:59:39,035] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): dim_table_creation> on 2024-01-31 17:59:18.936298+00:00
+[2024-02-01 17:59:39,058] {standard_task_runner.py:52} INFO - Started process 10533 to run task
+[2024-02-01 17:59:39,066] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_25', 'dim_table_creation', 'scheduled__2024-01-31T17:59:18.936298+00:00', '--job-id', '393', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp5irn4grb', '--error-file', '/tmp/tmpfy0_bu0_']
+[2024-02-01 17:59:39,068] {standard_task_runner.py:80} INFO - Job 393: Subtask dim_table_creation
+[2024-02-01 17:59:39,575] {task_command.py:369} INFO - Running <TaskInstance: project_6_25.dim_table_creation scheduled__2024-01-31T17:59:18.936298+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 17:59:40,308] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_25
+AIRFLOW_CTX_TASK_ID=dim_table_creation
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T17:59:18.936298+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-31T17:59:18.936298+00:00
+[2024-02-01 17:59:40,526] {logging_mixin.py:115} INFO -    kode_prov   nama_prov
+0         32  Jawa Barat
+[2024-02-01 17:59:40,548] {logging_mixin.py:115} INFO -    kode_kab  kode_prov         nama_kab
+0      3201         32  Kabupaten Bogor
+[2024-02-01 17:59:40,574] {logging_mixin.py:115} INFO -    case_id   status_name             status_detail
+0        1  closecontact  closecontact_dikarantina
+1        2  closecontact    closecontact_discarded
+2        3  closecontact    closecontact_meninggal
+3        4      probable        probable_diisolasi
+4        5      probable        probable_discarded
+[2024-02-01 17:59:40,666] {logging_mixin.py:115} INFO - Connect PostgreSQL using psycopg2
+[2024-02-01 17:59:40,798] {logging_mixin.py:115} INFO - Connect Engine MySQL
+[2024-02-01 17:59:40,958] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-01 17:59:41,185] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_25, task_id=dim_table_creation, execution_date=20240131T175918, start_date=20240201T175938, end_date=20240201T175941
+[2024-02-01 17:59:41,305] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 17:59:41,819] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

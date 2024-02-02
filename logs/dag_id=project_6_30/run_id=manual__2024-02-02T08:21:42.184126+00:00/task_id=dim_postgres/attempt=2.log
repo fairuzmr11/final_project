@@ -1,0 +1,100 @@
+[2024-02-02 08:26:19,358] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_30.dim_postgres manual__2024-02-02T08:21:42.184126+00:00 [queued]>
+[2024-02-02 08:26:19,370] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_30.dim_postgres manual__2024-02-02T08:21:42.184126+00:00 [queued]>
+[2024-02-02 08:26:19,371] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:26:19,371] {taskinstance.py:1357} INFO - Starting attempt 2 of 3
+[2024-02-02 08:26:19,371] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-02 08:26:19,393] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): dim_postgres> on 2024-02-02 08:21:42.184126+00:00
+[2024-02-02 08:26:19,400] {standard_task_runner.py:52} INFO - Started process 9120 to run task
+[2024-02-02 08:26:19,405] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_30', 'dim_postgres', 'manual__2024-02-02T08:21:42.184126+00:00', '--job-id', '508', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp2s_37p5q', '--error-file', '/tmp/tmprhg0g0ny']
+[2024-02-02 08:26:19,406] {standard_task_runner.py:80} INFO - Job 508: Subtask dim_postgres
+[2024-02-02 08:26:19,604] {task_command.py:369} INFO - Running <TaskInstance: project_6_30.dim_postgres manual__2024-02-02T08:21:42.184126+00:00 [running]> on host 20775c919683
+[2024-02-02 08:26:19,907] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_30
+AIRFLOW_CTX_TASK_ID=dim_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-02T08:21:42.184126+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-02T08:21:42.184126+00:00
+[2024-02-02 08:26:19,987] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-02-02 08:26:20,066] {dbapi.py:208} INFO - Running statement: -- case table
+DROP TABLE IF EXISTS case_table;
+CREATE TABLE IF NOT EXISTS case_table (
+    id INTEGER,
+    status_name VARCHAR(255) NOT NULL,
+    status_detail VARCHAR(255) NOT NULL
+);
+
+
+-- province TABLE
+DROP TABLE IF EXISTS province_table;
+CREATE TABLE IF NOT EXISTS province_table (
+    province_id INTEGER PRIMARY KEY,
+    province_name VARCHAR(255) NOT NULL
+);
+
+
+-- district TABLE
+DROP TABLE IF EXISTS district_table;
+CREATE TABLE IF NOT EXISTS district_table (
+    district_id INTEGER PRIMARY KEY,
+    province_id INTEGER,
+    district_name VARCHAR(255) NOT NULL
+);
+
+
+-- province daily table
+DROP TABLE IF EXISTS daily_province;
+CREATE TABLE IF NOT EXISTS daily_province (
+    id INT PRIMARY KEY,
+    province_id INT,
+    case_id INT,
+    date DATE,
+    total INT
+);
+
+-- PROVINCE MONTHLY TABLE
+DROP TABLE IF EXISTS monthly_province;
+CREATE TABLE IF NOT EXISTS monthly_province (
+    id INT PRIMARY KEY,
+    province_id INT,
+    case_id INT,
+    month VARCHAR(255),
+    total INT   
+);
+
+-- PROVINCE YEARLY TABLE
+DROP TABLE IF EXISTS yearly_province;
+CREATE TABLE IF NOT EXISTS yearly_province (
+    id INT PRIMARY KEY,
+    province_id INT,
+    case_id INT,
+    year VARCHAR(255),
+    total INT  
+);
+
+-- DISTRICT MONTHLY TABLE
+DROP TABLE IF EXISTS monthly_district;
+CREATE TABLE IF NOT EXISTS monthly_district (
+    id INT PRIMARY KEY,
+    district_id INT,
+    case_id INT,
+    month VARCHAR(255),
+    total INT
+);
+
+-- DISTRICT YEARLY TABLE
+DROP TABLE IF EXISTS yearly_district;
+CREATE TABLE IF NOT EXISTS yearly_district (
+    id INT PRIMARY KEY,
+    district_id INT,
+    case_id INT,
+    year VARCHAR(255),
+    total INT
+);
+
+, parameters: None
+[2024-02-02 08:26:20,222] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_30, task_id=dim_postgres, execution_date=20240202T082142, start_date=20240202T082619, end_date=20240202T082620
+[2024-02-02 08:26:20,267] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-02 08:26:20,422] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,10 @@
+case_id,status_name,status_detail
+1,closecontact,closecontact_dikarantina
+2,closecontact,closecontact_discarded
+3,closecontact,closecontact_meninggal
+4,probable,probable_diisolasi
+5,probable,probable_discarded
+6,probable,probable_meninggal
+7,suspect,suspect_diisolasi
+8,suspect,suspect_discarded
+9,suspect,suspect_meninggal

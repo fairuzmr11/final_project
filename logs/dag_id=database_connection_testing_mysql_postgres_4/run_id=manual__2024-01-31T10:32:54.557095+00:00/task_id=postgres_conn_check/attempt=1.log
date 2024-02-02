@@ -1,0 +1,29 @@
+[2024-01-31 10:32:56,048] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_4.postgres_conn_check manual__2024-01-31T10:32:54.557095+00:00 [queued]>
+[2024-01-31 10:32:56,055] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_4.postgres_conn_check manual__2024-01-31T10:32:54.557095+00:00 [queued]>
+[2024-01-31 10:32:56,055] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 10:32:56,055] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-01-31 10:32:56,056] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 10:32:56,065] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): postgres_conn_check> on 2024-01-31 10:32:54.557095+00:00
+[2024-01-31 10:32:56,070] {standard_task_runner.py:52} INFO - Started process 6728 to run task
+[2024-01-31 10:32:56,080] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'database_connection_testing_mysql_postgres_4', 'postgres_conn_check', 'manual__2024-01-31T10:32:54.557095+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/test_connection.py', '--cfg-path', '/tmp/tmpnm3qm5iy', '--error-file', '/tmp/tmpiv77f3xs']
+[2024-01-31 10:32:56,083] {standard_task_runner.py:80} INFO - Job 20: Subtask postgres_conn_check
+[2024-01-31 10:32:56,150] {task_command.py:369} INFO - Running <TaskInstance: database_connection_testing_mysql_postgres_4.postgres_conn_check manual__2024-01-31T10:32:54.557095+00:00 [running]> on host f72468368ef9
+[2024-01-31 10:32:56,226] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=database_connection_testing_mysql_postgres_4
+AIRFLOW_CTX_TASK_ID=postgres_conn_check
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T10:32:54.557095+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T10:32:54.557095+00:00
+[2024-01-31 10:32:56,230] {logging_mixin.py:115} INFO - Error connecting to PostgreSQL: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+[2024-01-31 10:32:56,230] {python.py:173} INFO - Done. Returned value was: False
+[2024-01-31 10:32:56,256] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=database_connection_testing_mysql_postgres_4, task_id=postgres_conn_check, execution_date=20240131T103254, start_date=20240131T103256, end_date=20240131T103256
+[2024-01-31 10:32:56,292] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 10:32:56,321] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

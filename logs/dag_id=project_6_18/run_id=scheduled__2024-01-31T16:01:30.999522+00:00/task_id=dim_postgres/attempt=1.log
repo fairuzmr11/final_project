@@ -1,0 +1,45 @@
+[2024-02-01 16:01:55,584] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_18.dim_postgres scheduled__2024-01-31T16:01:30.999522+00:00 [queued]>
+[2024-02-01 16:01:55,600] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_18.dim_postgres scheduled__2024-01-31T16:01:30.999522+00:00 [queued]>
+[2024-02-01 16:01:55,600] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:01:55,601] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 16:01:55,601] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:01:55,627] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): dim_postgres> on 2024-01-31 16:01:30.999522+00:00
+[2024-02-01 16:01:55,647] {standard_task_runner.py:52} INFO - Started process 6247 to run task
+[2024-02-01 16:01:55,655] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_18', 'dim_postgres', 'scheduled__2024-01-31T16:01:30.999522+00:00', '--job-id', '246', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpfraaj3rr', '--error-file', '/tmp/tmpxncfeaya']
+[2024-02-01 16:01:55,656] {standard_task_runner.py:80} INFO - Job 246: Subtask dim_postgres
+[2024-02-01 16:01:55,892] {task_command.py:369} INFO - Running <TaskInstance: project_6_18.dim_postgres scheduled__2024-01-31T16:01:30.999522+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 16:01:56,150] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_18
+AIRFLOW_CTX_TASK_ID=dim_postgres
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T16:01:30.999522+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-31T16:01:30.999522+00:00
+[2024-02-01 16:01:56,208] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-02-01 16:01:56,284] {dbapi.py:208} INFO - Running statement: CREATE TABLE IF NOT EXISTS case_table (
+    id INTEGER PRIMARY KEY,
+    status_name VARCHAR(255) NOT NULL,
+    status_detail VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS district_table (
+    district_id INTEGER PRIMARY KEY,
+    province_id INTEGER REFERENCES province_table(province_id),
+    district_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS province_table (
+    province_id INTEGER PRIMARY KEY,
+    province_name VARCHAR(255) NOT NULL
+);, parameters: None
+[2024-02-01 16:01:56,294] {postgres.py:94} INFO - NOTICE:  relation "case_table" already exists, skipping
+
+[2024-02-01 16:01:56,295] {postgres.py:94} INFO - NOTICE:  relation "district_table" already exists, skipping
+
+[2024-02-01 16:01:56,295] {postgres.py:94} INFO - NOTICE:  relation "province_table" already exists, skipping
+
+[2024-02-01 16:01:56,388] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_18, task_id=dim_postgres, execution_date=20240131T160130, start_date=20240201T160155, end_date=20240201T160156
+[2024-02-01 16:01:56,439] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 16:01:56,613] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

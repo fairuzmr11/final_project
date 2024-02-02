@@ -1,0 +1,73 @@
+[2024-02-01 16:15:29,813] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_20.dim_table_creation scheduled__2024-01-31T16:15:14.970011+00:00 [queued]>
+[2024-02-01 16:15:29,827] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_20.dim_table_creation scheduled__2024-01-31T16:15:14.970011+00:00 [queued]>
+[2024-02-01 16:15:29,827] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:15:29,827] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 16:15:29,828] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 16:15:29,850] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): dim_table_creation> on 2024-01-31 16:15:14.970011+00:00
+[2024-02-01 16:15:29,868] {standard_task_runner.py:52} INFO - Started process 6812 to run task
+[2024-02-01 16:15:29,874] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_20', 'dim_table_creation', 'scheduled__2024-01-31T16:15:14.970011+00:00', '--job-id', '284', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpjgxknf96', '--error-file', '/tmp/tmpdrzkvloo']
+[2024-02-01 16:15:29,876] {standard_task_runner.py:80} INFO - Job 284: Subtask dim_table_creation
+[2024-02-01 16:15:30,119] {task_command.py:369} INFO - Running <TaskInstance: project_6_20.dim_table_creation scheduled__2024-01-31T16:15:14.970011+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 16:15:30,436] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_20
+AIRFLOW_CTX_TASK_ID=dim_table_creation
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T16:15:14.970011+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-01-31T16:15:14.970011+00:00
+[2024-02-01 16:15:30,565] {logging_mixin.py:115} INFO -    province_id   nama_prov
+0            1  Jawa Barat
+[2024-02-01 16:15:30,575] {logging_mixin.py:115} INFO -    district_id  province_id           nama_kab
+0            1            1  Kabupaten Bandung
+[2024-02-01 16:15:30,587] {logging_mixin.py:115} INFO -    case_id   status_name status_detail
+0        1  closecontact   dikarantina
+1        2  closecontact     discarded
+2        3  closecontact     meninggal
+3        4      probable     diisolasi
+4        5      probable     discarded
+[2024-02-01 16:15:30,654] {logging_mixin.py:115} INFO - Connect PostgreSQL using psycopg2
+[2024-02-01 16:15:30,669] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 2056, in execute
+    cur.execute(*args, **kwargs)
+psycopg2.errors.SyntaxError: syntax error at or near ";"
+LINE 1: ...ELECT name FROM sqlite_master WHERE type='table' AND name=?;
+                                                                      ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/main.py", line 130, in dim_table_creation
+    df_province.to_sql(name='province_table', con=conn_postgres, if_exists='append', index=False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/core/generic.py", line 2882, in to_sql
+    method=method,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 728, in to_sql
+    **engine_kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 2225, in to_sql
+    table.create()
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 856, in create
+    if self.exists():
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 840, in exists
+    return self.pd_sql.has_table(self.name, self.schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 2236, in has_table
+    return len(self.execute(query, [name]).fetchall()) > 0
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 2068, in execute
+    raise ex from exc
+pandas.io.sql.DatabaseError: Execution failed on sql 'SELECT name FROM sqlite_master WHERE type='table' AND name=?;': syntax error at or near ";"
+LINE 1: ...ELECT name FROM sqlite_master WHERE type='table' AND name=?;
+                                                                      ^
+
+[2024-02-01 16:15:30,786] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=project_6_20, task_id=dim_table_creation, execution_date=20240131T161514, start_date=20240201T161529, end_date=20240201T161530
+[2024-02-01 16:15:30,824] {standard_task_runner.py:97} ERROR - Failed to execute job 284 for task dim_table_creation (Execution failed on sql 'SELECT name FROM sqlite_master WHERE type='table' AND name=?;': syntax error at or near ";"
+LINE 1: ...ELECT name FROM sqlite_master WHERE type='table' AND name=?;
+                                                                      ^
+; 6812)
+[2024-02-01 16:15:30,854] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-01 16:15:31,113] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

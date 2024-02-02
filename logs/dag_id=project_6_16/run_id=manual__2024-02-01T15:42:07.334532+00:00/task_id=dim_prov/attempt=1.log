@@ -1,0 +1,29 @@
+[2024-02-01 15:42:13,334] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_16.dim_prov manual__2024-02-01T15:42:07.334532+00:00 [queued]>
+[2024-02-01 15:42:13,353] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_16.dim_prov manual__2024-02-01T15:42:07.334532+00:00 [queued]>
+[2024-02-01 15:42:13,353] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 15:42:13,353] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-02-01 15:42:13,353] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-01 15:42:13,377] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): dim_prov> on 2024-02-01 15:42:07.334532+00:00
+[2024-02-01 15:42:13,385] {standard_task_runner.py:52} INFO - Started process 5551 to run task
+[2024-02-01 15:42:13,391] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_16', 'dim_prov', 'manual__2024-02-01T15:42:07.334532+00:00', '--job-id', '230', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpej3kf83v', '--error-file', '/tmp/tmp6a92icwe']
+[2024-02-01 15:42:13,391] {standard_task_runner.py:80} INFO - Job 230: Subtask dim_prov
+[2024-02-01 15:42:13,614] {task_command.py:369} INFO - Running <TaskInstance: project_6_16.dim_prov manual__2024-02-01T15:42:07.334532+00:00 [running]> on host 1fafaef2f352
+[2024-02-01 15:42:13,965] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_16
+AIRFLOW_CTX_TASK_ID=dim_prov
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-01T15:42:07.334532+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-01T15:42:07.334532+00:00
+[2024-02-01 15:42:14,027] {base.py:68} INFO - Using connection ID 'postgres_dwh' for task execution.
+[2024-02-01 15:42:14,084] {dbapi.py:208} INFO - Running statement: CREATE TABLE IF NOT EXISTS province_table (
+    province_id INTEGER PRIMARY KEY,
+    province_name VARCHAR(255) NOT NULL
+);, parameters: None
+[2024-02-01 15:42:14,090] {postgres.py:94} INFO - NOTICE:  relation "province_table" already exists, skipping
+
+[2024-02-01 15:42:14,161] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=project_6_16, task_id=dim_prov, execution_date=20240201T154207, start_date=20240201T154213, end_date=20240201T154214
+[2024-02-01 15:42:14,209] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-01 15:42:14,370] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

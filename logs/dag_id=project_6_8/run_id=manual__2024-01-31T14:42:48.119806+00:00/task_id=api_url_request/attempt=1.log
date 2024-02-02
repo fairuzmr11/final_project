@@ -1,0 +1,147 @@
+[2024-01-31 14:42:50,382] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_8.api_url_request manual__2024-01-31T14:42:48.119806+00:00 [queued]>
+[2024-01-31 14:42:50,402] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: project_6_8.api_url_request manual__2024-01-31T14:42:48.119806+00:00 [queued]>
+[2024-01-31 14:42:50,402] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 14:42:50,402] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-01-31 14:42:50,403] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 14:42:50,439] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): api_url_request> on 2024-01-31 14:42:48.119806+00:00
+[2024-01-31 14:42:50,451] {standard_task_runner.py:52} INFO - Started process 6100 to run task
+[2024-01-31 14:42:50,456] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'project_6_8', 'api_url_request', 'manual__2024-01-31T14:42:48.119806+00:00', '--job-id', '110', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpftqpo_dp', '--error-file', '/tmp/tmpasbbc_yp']
+[2024-01-31 14:42:50,457] {standard_task_runner.py:80} INFO - Job 110: Subtask api_url_request
+[2024-01-31 14:42:50,751] {task_command.py:369} INFO - Running <TaskInstance: project_6_8.api_url_request manual__2024-01-31T14:42:48.119806+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 14:42:51,139] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=project_6_8
+AIRFLOW_CTX_TASK_ID=api_url_request
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T14:42:48.119806+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T14:42:48.119806+00:00
+[2024-01-31 14:42:51,163] {logging_mixin.py:115} INFO - Connect Engine MySQL
+[2024-01-31 14:42:51,449] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 538, in cmd_query
+    query_attrs=self._query_attrs)
+_mysql_connector.MySQLInterfaceError: Table 'raw_covid_data' already exists
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1706, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 716, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/cursor_cext.py", line 271, in execute
+    raw_as_string=self._raw_as_string)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 541, in cmd_query
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.ProgrammingError: 1050 (42S01): Table 'raw_covid_data' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/main.py", line 61, in api_url_request
+    df.to_sql(name='raw_covid_data', con=mysql_engine, if_exists='replace', index=False)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/core/generic.py", line 2882, in to_sql
+    method=method,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 728, in to_sql
+    **engine_kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 1758, in to_sql
+    dtype=dtype,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 1650, in prep_table
+    table.create()
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 867, in create
+    self._execute_create()
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/sql.py", line 853, in _execute_create
+    self.table.create()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 943, in create
+    bind._run_ddl_visitor(ddl.SchemaGenerator, self, checkfirst=checkfirst)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3008, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2016, in _run_ddl_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/visitors.py", line 483, in traverse_single
+    return meth(obj, **kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/ddl.py", line 895, in visit_table
+    include_foreign_key_constraints,  # noqa
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/ddl.py", line 78, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1296, in _execute_ddl
+    compiled,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1749, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1706, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 716, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/cursor_cext.py", line 271, in execute
+    raw_as_string=self._raw_as_string)
+  File "/home/airflow/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 541, in cmd_query
+    sqlstate=exc.sqlstate)
+sqlalchemy.exc.ProgrammingError: (mysql.connector.errors.ProgrammingError) 1050 (42S01): Table 'raw_covid_data' already exists
+[SQL: 
+CREATE TABLE raw_covid_data (
+	`CLOSECONTACT` BIGINT, 
+	`CONFIRMATION` BIGINT, 
+	`PROBABLE` BIGINT, 
+	`SUSPECT` BIGINT, 
+	closecontact_dikarantina BIGINT, 
+	closecontact_discarded BIGINT, 
+	closecontact_meninggal BIGINT, 
+	confirmation_meninggal BIGINT, 
+	confirmation_sembuh BIGINT, 
+	kode_kab TEXT, 
+	kode_prov TEXT, 
+	nama_kab TEXT, 
+	nama_prov TEXT, 
+	probable_diisolasi BIGINT, 
+	probable_discarded BIGINT, 
+	probable_meninggal BIGINT, 
+	suspect_diisolasi BIGINT, 
+	suspect_discarded BIGINT, 
+	suspect_meninggal BIGINT, 
+	tanggal TEXT
+)
+
+]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+[2024-01-31 14:42:51,609] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=project_6_8, task_id=api_url_request, execution_date=20240131T144248, start_date=20240131T144250, end_date=20240131T144251
+[2024-01-31 14:42:51,673] {standard_task_runner.py:97} ERROR - Failed to execute job 110 for task api_url_request ((mysql.connector.errors.ProgrammingError) 1050 (42S01): Table 'raw_covid_data' already exists
+[SQL: 
+CREATE TABLE raw_covid_data (
+	`CLOSECONTACT` BIGINT, 
+	`CONFIRMATION` BIGINT, 
+	`PROBABLE` BIGINT, 
+	`SUSPECT` BIGINT, 
+	closecontact_dikarantina BIGINT, 
+	closecontact_discarded BIGINT, 
+	closecontact_meninggal BIGINT, 
+	confirmation_meninggal BIGINT, 
+	confirmation_sembuh BIGINT, 
+	kode_kab TEXT, 
+	kode_prov TEXT, 
+	nama_kab TEXT, 
+	nama_prov TEXT, 
+	probable_diisolasi BIGINT, 
+	probable_discarded BIGINT, 
+	probable_meninggal BIGINT, 
+	suspect_diisolasi BIGINT, 
+	suspect_discarded BIGINT, 
+	suspect_meninggal BIGINT, 
+	tanggal TEXT
+)
+
+]
+(Background on this error at: http://sqlalche.me/e/14/f405); 6100)
+[2024-01-31 14:42:51,690] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-01-31 14:42:51,945] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,25 @@
+[2024-01-31 11:46:58,857] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check manual__2024-01-31T11:46:56.391171+00:00 [queued]>
+[2024-01-31 11:46:58,870] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check manual__2024-01-31T11:46:56.391171+00:00 [queued]>
+[2024-01-31 11:46:58,871] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 11:46:58,871] {taskinstance.py:1357} INFO - Starting attempt 1 of 2
+[2024-01-31 11:46:58,871] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-01-31 11:46:58,903] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): mysql_conn_check> on 2024-01-31 11:46:56.391171+00:00
+[2024-01-31 11:46:58,908] {standard_task_runner.py:52} INFO - Started process 322 to run task
+[2024-01-31 11:46:58,916] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'database_connection_testing_mysql_postgres_7', 'mysql_conn_check', 'manual__2024-01-31T11:46:56.391171+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/test_connection.py', '--cfg-path', '/tmp/tmpqw6iqnns', '--error-file', '/tmp/tmp9r9medwc']
+[2024-01-31 11:46:58,918] {standard_task_runner.py:80} INFO - Job 35: Subtask mysql_conn_check
+[2024-01-31 11:46:59,115] {task_command.py:369} INFO - Running <TaskInstance: database_connection_testing_mysql_postgres_7.mysql_conn_check manual__2024-01-31T11:46:56.391171+00:00 [running]> on host 8ebb6ccf62d7
+[2024-01-31 11:46:59,423] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=database_connection_testing_mysql_postgres_7
+AIRFLOW_CTX_TASK_ID=mysql_conn_check
+AIRFLOW_CTX_EXECUTION_DATE=2024-01-31T11:46:56.391171+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-01-31T11:46:56.391171+00:00
+[2024-01-31 11:46:59,474] {logging_mixin.py:115} INFO - Error connecting to MySQL: (mysql.connector.errors.DatabaseError) 2003 (HY000): Can't connect to MySQL server on 'localhost:3307' (99)
+(Background on this error at: http://sqlalche.me/e/14/4xp6)
+[2024-01-31 11:46:59,475] {python.py:173} INFO - Done. Returned value was: False
+[2024-01-31 11:46:59,620] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=database_connection_testing_mysql_postgres_7, task_id=mysql_conn_check, execution_date=20240131T114656, start_date=20240131T114658, end_date=20240131T114659
+[2024-01-31 11:46:59,697] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-01-31 11:46:59,855] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check
